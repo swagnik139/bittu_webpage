@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helios Haven</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+        header { background: #000; color: #fff; padding: 20px; text-align: center; }
+        nav { background: #e8e8e8; padding: 10px; text-align: center; }
+        nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: bold; }
+        .hero { background: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f') no-repeat center center/cover; height: 400px; color: white; display: flex; justify-content: center; align-items: center; font-size: 2em; }
+        .section { padding: 40px 20px; text-align: center; }
+        .carousel-container { position: relative; width: 90%; margin: 0 auto; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-item { min-width: 100%; box-sizing: border-box; }
+        .carousel-item img { width: 200px; border-radius: 10px; }
+        .carousel-buttons { margin-top: 10px; }
+        .carousel-buttons button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .price-tag { font-weight: bold; color: #444; margin-top: 5px; }
+        .product-title { font-size: 1.5em; margin: 30px 0 10px; color: #333; }
+        footer { background: #222; color: #fff; text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Helios Haven</h1>
+        <p>Where Fashion Meets Sustainability</p>
+    </header>
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Order</a>
+    </nav>
+    <div class="hero">
+        <div>Shine in Style</div>
+    </div>
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>Helios Haven is a premium t-shirt brand that blends Greek mythology, art, and eco-conscious design. We offer stylish, customizable t-shirts for the fashion-forward generation.</p>
+    </section>
+
+    <section id="products" class="section">
+        <h2>Our Products</h2>
+
+        <div class="product-title">Male Collection</div>
+        <div class="carousel-container">
+            <div class="carousel-track" id="male-carousel">
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/1200x/b2/d7/35/b2d73595d8345b572aeb233f21d61662.jpg" alt="Solar Myth Tee">
+                    <div class="price-tag">₹599</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/1200x/2b/8d/7d/2b8d7d2d945c41579f3e4ba27ae5c1cc.jpg" alt="Midnight Sun Tee">
+                    <div class="price-tag">₹599</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="C:\Users\Subhajyoti\OneDrive\Documents\tech.jpg" alt="Sunfire Edge Tee" height="250px">
+                    <div class="price-tag">₹499</div>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="moveSlide('male-carousel', -1)">Prev</button>
+                <button onclick="moveSlide('male-carousel', 1)">Next</button>
+            </div>
+        </div>
+
+        <div class="product-title">Female Collection</div>
+        <div class="carousel-container">
+            <div class="carousel-track" id="female-carousel">
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/1200x/8b/b9/b7/8bb9b705b202b8c11632f37521220a3c.jpg" alt="Minimal Sunlight Tee">
+                    <div class="price-tag">₹499</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/736x/b6/36/90/b636909ade87c0f3fd2c6cc4cca49194.jpg" alt="Dawn Blossom Tee">
+                    <div class="price-tag">₹599</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.pinimg.com/736x/77/16/a0/7716a02f1da6b06006aaa3d254b7ca9a.jpg" alt="Golden Aura Tee">
+                    <div class="price-tag">₹499</div>
+                </div>
+              
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="moveSlide('female-carousel', -1)">Prev</button>
+                <button onclick="moveSlide('female-carousel', 1)">Next</button>
+            </div>
+        </div>
+
+        <p>All products are made with sustainable fabric and printed on demand.</p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Order Now</h2>
+        <p>Interested in our products? <a href="https://forms.gle/your-form-link" target="_blank">Click here to pre-order</a> via Google Form.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Helios Haven. Designed by Team ESD.</p>
+    </footer>
+
+    <script>
+        function moveSlide(carouselId, direction) {
+            const track = document.getElementById(carouselId);
+            const itemWidth = track.children[0].offsetWidth;
+            const currentTransform = getComputedStyle(track).transform;
+            const matrix = new DOMMatrix(currentTransform);
+            const currentX = matrix.m41;
+            const newX = currentX - direction * itemWidth;
+            const maxScroll = -itemWidth * (track.children.length - 1);
+            if (newX <= 0 && newX >= maxScroll) {
+                track.style.transform = `translateX(${newX}px)`;
+            }
+        }
+    </script>
+</body>
+</html>
